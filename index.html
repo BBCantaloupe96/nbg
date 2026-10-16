@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Research, projects, and team information for an engineering laboratory.">
+  <meta name="theme-color" content="#101c36">
+  <title>Research Lab | Engineering & Innovation</title>
+  <style>
+    :root { --navy:#101c36; --blue:#315ee8; --ink:#172033; --muted:#647089; --pale:#f4f7fc; --line:#e3e9f3; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; font-family:Inter,system-ui,-apple-system,"Segoe UI",sans-serif; color:var(--ink); line-height:1.6; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1120px, calc(100% - 40px)); margin:auto; }
+    header { background:rgba(255,255,255,.96); border-bottom:1px solid var(--line); position:sticky; top:0; z-index:10; }
+    .nav { min-height:76px; display:flex; align-items:center; justify-content:space-between; gap:24px; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:-.03em; }
+    .logo { width:42px; height:42px; display:grid; place-items:center; color:#fff; background:var(--blue); border-radius:12px; font-weight:900; }
+    .brand small { display:block; color:var(--muted); font-size:11px; font-weight:600; letter-spacing:.08em; text-transform:uppercase; }
+    nav { display:flex; gap:26px; align-items:center; font-size:14px; font-weight:650; }
+    nav a:hover { color:var(--blue); }
+    .nav-cta,.btn { display:inline-flex; justify-content:center; align-items:center; padding:12px 18px; border-radius:10px; background:var(--blue); color:white; font-weight:750; border:1px solid var(--blue); }
+    .menu { display:none; background:white; border:1px solid var(--line); border-radius:9px; padding:9px 12px; font-size:20px; }
+    .hero { background:radial-gradient(circle at 80% 20%,#263d70 0,transparent 33%),linear-gradient(120deg,#101c36,#172c50); color:#fff; padding:92px 0 88px; overflow:hidden; }
+    .hero-grid { display:grid; grid-template-columns:1.15fr .85fr; align-items:center; gap:56px; }
+    .eyebrow { color:#a9bdff; font-size:12px; font-weight:800; letter-spacing:.16em; text-transform:uppercase; }
+    h1 { font-size:clamp(38px,5vw,62px); line-height:1.08; letter-spacing:-.045em; margin:18px 0; max-width:700px; }
+    .hero p { color:#d2dced; max-width:590px; font-size:17px; }
+    .actions { display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
+    .btn.secondary { background:transparent; border-color:#607293; }
+    .hero-art { min-height:310px; border:1px solid #405276; border-radius:24px; padding:22px; background:linear-gradient(145deg,rgba(255,255,255,.10),rgba(255,255,255,.025)); position:relative; }
+    .orb { position:absolute; width:150px; height:150px; border-radius:50%; right:14%; top:14%; background:radial-gradient(circle at 35% 30%,#b5d7ff,#4c72e8 50%,#273d87); box-shadow:0 0 70px #4269d855; }
+    .orbit { position:absolute; width:240px; height:100px; border:1px solid #7d9ee7; border-radius:50%; right:0; top:35%; transform:rotate(-30deg); }
+    .orbit.two { transform:rotate(35deg); border-color:#5974ac; }
+    .art-label { position:absolute; bottom:20px; left:22px; right:22px; padding:14px 16px; border-radius:13px; background:#101c36d9; border:1px solid #405276; }
+    .art-label strong { display:block; font-size:14px; }
+    .art-label span { color:#bdcbe2; font-size:12px; }
+    section { padding:78px 0; }
+    .section-head { max-width:650px; margin-bottom:32px; }
+    .kicker { color:var(--blue); font-size:12px; letter-spacing:.15em; font-weight:850; text-transform:uppercase; }
+    h2 { margin:8px 0 12px; font-size:clamp(28px,3.3vw,40px); line-height:1.2; letter-spacing:-.035em; }
+    .section-head p,.muted { color:var(--muted); }
+    .cards { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .card { padding:25px; border:1px solid var(--line); border-radius:17px; background:#fff; box-shadow:0 8px 28px #18284b08; }
+    .card-icon { width:45px; height:45px; display:grid; place-items:center; border-radius:13px; background:#edf2ff; color:var(--blue); font-size:21px; }
+    .card h3 { margin:17px 0 7px; font-size:19px; }
+    .card p { margin:0; color:var(--muted); font-size:14px; }
+    .about { background:var(--pale); }
+    .about-grid { display:grid; grid-template-columns:.8fr 1.2fr; gap:55px; align-items:start; }
+    .about-panel { padding:28px; border-radius:18px; background:var(--navy); color:#fff; }
+    .about-panel p { color:#c8d3e6; }
+    .pill { display:inline-block; padding:7px 10px; margin:4px 4px 0 0; border:1px solid #ffffff35; border-radius:99px; font-size:12px; color:#dbe5ff; }
+    .team-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:18px; }
+    .person { border:1px solid var(--line); border-radius:16px; padding:22px; }
+    .avatar { width:54px; height:54px; display:grid; place-items:center; border-radius:50%; background:#e9efff; color:var(--blue); font-weight:850; font-size:18px; }
+    .person h3 { margin:14px 0 2px; }
+    .person p { margin:0; color:var(--muted); font-size:14px; }
+    .contact { background:#f4f7fc; }
+    .contact-box { display:grid; grid-template-columns:1fr 1fr; gap:40px; background:white; border:1px solid var(--line); padding:34px; border-radius:20px; }
+    .contact-item { margin:15px 0; color:var(--muted); }
+    .contact-item strong { display:block; color:var(--ink); }
+    form { display:grid; gap:12px; }
+    input,textarea { width:100%; padding:13px 14px; border:1px solid #d8e0ed; border-radius:9px; font:inherit; background:#fff; }
+    textarea { min-height:110px; resize:vertical; }
+    button { cursor:pointer; font:inherit; }
+    form button { justify-self:start; }
+    footer { padding:26px 0; background:#0b1428; color:#c4cee0; font-size:13px; }
+    .footer-inner { display:flex; justify-content:space-between; gap:20px; flex-wrap:wrap; }
+    @media(max-width:800px) {
+      nav { display:none; position:absolute; top:76px; left:0; right:0; padding:18px 22px; background:#fff; border-bottom:1px solid var(--line); flex-direction:column; align-items:flex-start; gap:16px; }
+      nav.open { display:flex; } .menu { display:block; } .nav-cta { display:none; }
+      .hero { padding:65px 0; } .hero-grid,.about-grid,.contact-box { grid-template-columns:1fr; gap:28px; }
+      .hero-art { min-height:260px; } .cards,.team-grid { grid-template-columns:1fr; }
+      section { padding:58px 0; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap nav">
+      <a class="brand" href="#home" aria-label="Research Lab home">
+        <span class="logo">RL</span>
+        <span>RESEARCH LAB<small>Engineering & Innovation</small></span>
+      </a>
+      <nav id="navigation" aria-label="Main navigation">
+        <a href="#about">About</a><a href="#research">Research</a><a href="#projects">Projects</a><a href="#team">Team</a><a href="#contact">Contact</a>
+      </nav>
+      <a class="nav-cta" href="#contact">Get in touch ↗</a>
+      <button class="menu" id="menuButton" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow">Research · Discovery · Impact</div>
+          <h1>Turning bold ideas into meaningful innovation.</h1>
+          <p>We explore challenging engineering problems through collaborative research, practical experimentation, and technology-driven solutions.</p>
+          <div class="actions"><a class="btn" href="#research">Explore our research ↗</a><a class="btn secondary" href="#about">Learn about the lab</a></div>
+        </div>
+        <div class="hero-art" aria-label="Abstract science and technology illustration">
+          <div class="orb"></div><div class="orbit"></div><div class="orbit two"></div>
+          <div class="art-label"><strong>Ideas. Experiments. Progress.</strong><span>A collaborative space for discovery and learning.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about">
+      <div class="wrap about-grid">
+        <div class="section-head">
+          <div class="kicker">About the lab</div>
+          <h2>Curiosity drives every breakthrough.</h2>
+          <p>Our laboratory brings people together to investigate real-world challenges, share knowledge, and develop ideas into practical outcomes.</p>
+        </div>
+        <div class="about-panel">
+          <h3>A collaborative research environment</h3>
+          <p>We value rigorous methods, open discussion, responsible innovation, and hands-on learning. Replace this text with your laboratory's verified mission and institutional details.</p>
+          <span class="pill">Research</span><span class="pill">Engineering</span><span class="pill">Student Learning</span><span class="pill">Collaboration</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="research">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Research areas</div><h2>Focused on questions that matter.</h2><p>Use these cards to highlight the lab's actual research themes and areas of expertise.</p></div>
+        <div class="cards">
+          <article class="card"><div class="card-icon">⌘</div><h3>Intelligent Systems</h3><p>Modeling, data analysis, and computational approaches for complex systems.</p></article>
+          <article class="card"><div class="card-icon">⌁</div><h3>Applied Engineering</h3><p>Design, prototyping, and testing methods that connect theory with practice.</p></article>
+          <article class="card"><div class="card-icon">◎</div><h3>Emerging Technology</h3><p>Exploring new tools and techniques to support reliable, useful innovation.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="projects">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Projects & publications</div><h2>Research with a practical purpose.</h2><p>Add current projects, recent publications, demonstrations, and links to verified research outputs here.</p></div>
+        <div class="cards">
+          <article class="card"><div class="kicker">Project 01</div><h3>Research Project Title</h3><p>Write a short, factual summary of the project's goals, methods, and outcomes.</p></article>
+          <article class="card"><div class="kicker">Publication</div><h3>Recent Paper or Article</h3><p>Add the paper title, author list, publication venue, year, and a link to the official paper.</p></article>
+          <article class="card"><div class="kicker">Collaboration</div><h3>Partnered Research</h3><p>Describe a verified collaboration, student opportunity, or ongoing research initiative.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section id="team">
+      <div class="wrap">
+        <div class="section-head"><div class="kicker">Our team</div><h2>People behind the research.</h2><p>Replace the sample profiles below with approved names, roles, biographies, and profile links.</p></div>
+        <div class="team-grid">
+          <article class="person"><div class="avatar">PI</div><h3>Principal Investigator</h3><p>Faculty Lead</p></article>
+          <article class="person"><div class="avatar">RS</div><h3>Research Staff</h3><p>Research Associate</p></article>
+          <article class="person"><div class="avatar">ST</div><h3>Student Researchers</h3><p>Graduate & Undergraduate Team</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap contact-box">
+        <div>
+          <div class="kicker">Contact</div><h2>Let's start a conversation.</h2>
+          <p class="muted">For research inquiries, student opportunities, or collaboration proposals, use the verified contact details for your lab.</p>
+          <div class="contact-item"><strong>Email</strong>Replace with the official lab email</div>
+          <div class="contact-item"><strong>Location</strong>Replace with the verified campus/building address</div>
+          <div class="contact-item"><strong>Institution</strong>Confirm the correct institution and department before publishing</div>
+        </div>
+        <form id="contactForm">
+          <label for="name">Your name</label><input id="name" name="name" autocomplete="name" placeholder="Full name" required>
+          <label for="email">Email address</label><input id="email" name="email" type="email" autocomplete="email" placeholder="you@example.com" required>
+          <label for="message">Message</label><textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+          <button class="btn" type="submit">Prepare email ↗</button>
+          <small class="muted">This demo opens your email app; it does not send or store form data.</small>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer><div class="wrap footer-inner"><span>© <span id="year"></span> Research Lab. Replace with the approved lab/institution name.</span><span>Built for research, learning, and collaboration.</span></div></footer>
+  <script>
+    const menuButton = document.getElementById('menuButton');
+    const navigation = document.getElementById('navigation');
+    menuButton.addEventListener('click', () => {
+      const isOpen = navigation.classList.toggle('open');
+      menuButton.setAttribute('aria-expanded', String(isOpen));
+    });
+    navigation.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navigation.classList.remove('open');
+      menuButton.setAttribute('aria-expanded', 'false');
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('contactForm').addEventListener('submit', event => {
+      event.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const message = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Website inquiry from ' + name);
+      const body = encodeURIComponent('Name: ' + name + '\nEmail: ' + email + '\n\n' + message);
+      alert('Please replace LAB_EMAIL@example.com in index.html with the official lab email address.');
+      window.location.href = 'mailto:LAB_EMAIL@example.com?subject=' + subject + '&body=' + body;
+    });
+  </script>
+</body>
+</html>
